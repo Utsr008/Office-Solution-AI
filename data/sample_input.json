@@ -1,0 +1,31 @@
+{
+  "calculations": [
+    {
+      "name": "A",
+      "formula": "SUM([Sales]) - SUM([Cost])"
+    },
+    {
+      "name": "B",
+      "formula": "[A] / SUM([Sales])"
+    },
+    {
+      "name": "C",
+      "formula": "IF [B] > 0.2 THEN 'High' ELSE 'Low' END"
+    },
+    {
+      "name": "KPI_1",
+      "formula": "SUM([Profit]) / SUM([Sales])"
+    }
+  ],
+  "target_calculation": "KPI_1",
+  "existing_dax": "SUM(Sales) / SUM(Profit)",
+  "visual": {
+    "visual_type": "bar",
+    "dimensions": [
+      "Region"
+    ],
+    "measures": [
+      "KPI_1"
+    ]
+  }
+}

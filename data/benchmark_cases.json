@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "SUM aggregation",
+    "source_formula": "SUM([Sales])",
+    "existing_dax": "SUM(Sales)",
+    "expected_dax": "SUM(Sales)"
+  },
+  {
+    "id": 2,
+    "name": "AVG aggregation",
+    "source_formula": "AVG([Sales])",
+    "existing_dax": "SUM(Sales)",
+    "expected_dax": "AVERAGE(Sales)"
+  },
+  {
+    "id": 3,
+    "name": "MIN aggregation",
+    "source_formula": "MIN([Sales])",
+    "existing_dax": "MAX(Sales)",
+    "expected_dax": "MIN(Sales)"
+  },
+  {
+    "id": 4,
+    "name": "MAX aggregation",
+    "source_formula": "MAX([Profit])",
+    "existing_dax": "SUM(Profit)",
+    "expected_dax": "MAX(Profit)"
+  },
+  {
+    "id": 5,
+    "name": "COUNT aggregation",
+    "source_formula": "COUNT([OrderID])",
+    "existing_dax": "SUM(OrderID)",
+    "expected_dax": "COUNT(OrderID)"
+  },
+  {
+    "id": 6,
+    "name": "Profit margin",
+    "source_formula": "SUM([Profit]) / SUM([Sales])",
+    "existing_dax": "SUM(Sales) / SUM(Profit)",
+    "expected_dax": "SUM(Profit) / SUM(Sales)"
+  },
+  {
+    "id": 7,
+    "name": "IF expression",
+    "source_formula": "IF [B] > 0.2 THEN 'High' ELSE 'Low' END",
+    "existing_dax": "IF(B > 0.2, 'Low', 'High')",
+    "expected_dax": "IF(B > 0.2, 'High', 'Low')"
+  },
+  {
+    "id": 8,
+    "name": "FIXED LOD",
+    "source_formula": "{FIXED [Region]: SUM([Sales])}",
+    "existing_dax": "SUM(Sales)",
+    "expected_dax": "CALCULATE(SUM(Sales), ALLEXCEPT('Data', 'Data'[Region]))"
+  },
+  {
+    "id": 9,
+    "name": "Window calculation",
+    "source_formula": "WINDOW_SUM(SUM([Profit]))",
+    "existing_dax": "SUM(Profit)",
+    "expected_dax": "CALCULATE(SUM(Profit), ALLSELECTED('Data'))"
+  },
+  {
+    "id": 10,
+    "name": "Running calculation",
+    "source_formula": "RUNNING_SUM(SUM([Sales]))",
+    "existing_dax": "SUM(Sales)",
+    "expected_dax": "CALCULATE(SUM(Sales), ALLSELECTED('Data'))"
+  }
+]
